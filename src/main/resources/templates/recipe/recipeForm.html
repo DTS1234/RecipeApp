@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Recipe Home</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body class="bg-light">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12 mt-6" >
+
+                <!--Recipe information-->
+
+                <div class="col-md-12 order-md-1 mt-3">
+                    <h4 class="mb-3"> Edit Recipe Information </h4>
+                    <form class="needs-validation" novalidate="">
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" id="description" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid description is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="cook-time">Cook Time</label>
+                                <input type="text" class="form-control" id="cook-time" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid Cook Time is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="prep-time">Prep Time</label>
+                                <input type="text" class="form-control" id="prep-time" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid Prep Time is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4 mb-3">
+                                <label for="source">Source</label>
+                                <input type="text" class="form-control" id="source" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid source is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="url">URL</label>
+                                <input type="text" class="form-control" id="url" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid URL is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="servings">Servings</label>
+                                <input type="number" class="form-control" id="servings" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid servings is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Ingredients-->
+
+                        <div class="card card-primary mb-3">
+
+                            <div class="card-header inline">
+                                <div class="card-title">
+                                  <h4>Ingredients</h4>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item" >
+                                        <label class="badge"> Ingredient 1</label>
+                                    </li>
+
+                                    <li class="list-group-item" >
+                                        <label class="badge"> Ingredient 2</label>
+                                    </li>
+
+                                    <li class="list-group-item" >
+                                        <label class="badge"> Ingredient 3</label>
+                                    </li>
+                                </ul>
+
+                                <button class="btn btn-secondary btn-block mt-4" style="width:120px">EDIT</button>
+
+                            </div>
+
+                        </div>
+
+                        <!--Categories-->
+
+                        <div class="card card-primary">
+
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h4>Categories</h4>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <ul class="list-group">
+
+                                    <li class="list-group-item" >
+                                        <label class="badge badge-danger mt-2" style="font-size:20px"> Category 1 </label>
+                                        <input type="checkbox" class="float-right mt-3">
+                                    </li>
+
+                                    <li class="list-group-item" >
+                                        <label class="badge badge-danger mt-2" style="font-size:20px"> Category 2 </label>
+                                        <input type="checkbox" class="float-right mt-3">
+                                    </li>
+
+                                    <li class="list-group-item" >
+                                        <label class="badge badge-danger mt-2" style="font-size:20px"> Category 3 </label>
+                                        <input type="checkbox" class="float-right mt-3">
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!--directions-->
+
+                        <div class="mb-3 mt-3">
+                            <label for="directions"><h4>Directions</h4></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="directions" placeholder="Type directions for your new recipe ..." required="">
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Your directions are required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--notes-->
+
+                        <div class="mb-3">
+                            <label for="email"><h4>Notes</h4></label>
+                            <input type="email" class="form-control" id="email" placeholder="Type notes for your new recipe ...">
+                            <div class="invalid-feedback">
+                                Please enter a valid notes for your recipe.
+                            </div>
+                        </div>
+
+                        <!--difficulty-->
+
+                        <div class="row mt-4">
+                            <div class="col mb-3">
+                                <label for="difficulty"><h4>Difficulty</h4></label>
+                                <select class="custom-select d-block w-100" id="difficulty" required="">
+                                    <option value="">Choose the level od difficulty for your recipe...</option>
+                                    <option>Hard</option>
+                                    <option>Medium</option>
+                                    <option>Easy</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid country.
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <button class="btn btn-primary btn-lg btn-block mb-4" type="submit">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
