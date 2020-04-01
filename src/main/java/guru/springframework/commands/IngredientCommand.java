@@ -4,13 +4,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//as your project grows and become more complex model objects are gonna
-//be different then what you are exposing to your web tier
+import java.math.BigDecimal;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-public class CategoryCommand {
+public class IngredientCommand {
+
     private Long id;
+    private UnitOfMeasureCommand unitOfMeasure;
     private String description;
+    private BigDecimal amount;
+
+
 }
