@@ -56,7 +56,7 @@ public class RecipeServiceImplTest {
     }
 
     @Test
-    public void getRecipes() throws Exception{
+    public void getRecipesTest() throws Exception{
 
         Recipe recipe = new Recipe();
         List<Recipe> recipeList = new ArrayList<>();
@@ -67,6 +67,15 @@ public class RecipeServiceImplTest {
         List<Recipe> recipes = recipeService.getRecipes();
         assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
+
+    }
+
+    @Test
+    public void deleteByIdTest() {
+
+        Long idToBeDeleted = Long.valueOf(1L);
+        recipeService.deleteById(idToBeDeleted);
+        verify(recipeRepository, times(1)).deleteById(anyLong());
 
     }
 }

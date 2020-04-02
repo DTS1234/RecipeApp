@@ -7,6 +7,7 @@ import guru.springframework.model.Recipe;
 import guru.springframework.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,16 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeOptional.get();
     }
 
+
     @Override
+    @Transactional //transactional because we are doing a transaction out of the scope
+    public RecipeCommand findCommandById(Long id) {
+        Recipe recipe = findById(id);
+        return recipeToRecipeCommand.convert(recipe);
+    }
+
+    @Override
+    @Transactional //transactional because we are doing a transaction out of the scope
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
 
         Recipe detachedRecipe = recipeCommandToRecipe.convert(command);//first we have to convert object to POJO for hibernate be able to save it
@@ -61,5 +71,8 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeToRecipeCommand.convert(savedRecipe);
     }
 
-
+    @Override
+    public void deleteById(Long idToDelete) {
+        recipeRepository.deleteById(idToDelete);
+    }
 }
