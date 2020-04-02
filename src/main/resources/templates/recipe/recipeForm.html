@@ -22,12 +22,15 @@
 
                 <div class="col-md-12 order-md-1 mt-3">
                     <h4 class="mb-3"> Edit Recipe Information </h4>
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation" novalidate="" th:object="${recipe}" th:action="@{/recipe/}">
+
+                        <input type="hidden" th:field="*{id}">
+
                         <div class="row">
 
                             <div class="col-md-4 mb-3">
                                 <label for="description">Description</label>
-                                <input type="text" class="form-control" id="description" placeholder="" value="" required="">
+                                <input type="text" class="form-control" id="description" th:field="*{description}">
                                 <div class="invalid-feedback">
                                     Valid description is required.
                                 </div>
@@ -35,7 +38,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="cook-time">Cook Time</label>
-                                <input type="text" class="form-control" id="cook-time" placeholder="" value="" required="">
+                                <input type="text" class="form-control" id="cook-time" th:field="*{cookTime}">
                                 <div class="invalid-feedback">
                                     Valid Cook Time is required.
                                 </div>
@@ -43,7 +46,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="prep-time">Prep Time</label>
-                                <input type="text" class="form-control" id="prep-time" placeholder="" value="" required="">
+                                <input type="text" class="form-control" id="prep-time" th:field="*{prepTime}">
                                 <div class="invalid-feedback">
                                     Valid Prep Time is required.
                                 </div>
@@ -54,7 +57,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="source">Source</label>
-                                <input type="text" class="form-control" id="source" placeholder="" value="" required="">
+                                <input type="text" class="form-control" id="source" th:field="*{source}">
                                 <div class="invalid-feedback">
                                     Valid source is required.
                                 </div>
@@ -62,7 +65,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="url">URL</label>
-                                <input type="text" class="form-control" id="url" placeholder="" value="" required="">
+                                <input type="text" class="form-control" id="url" th:field="*{url}">
                                 <div class="invalid-feedback">
                                     Valid URL is required.
                                 </div>
@@ -70,7 +73,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="servings">Servings</label>
-                                <input type="number" class="form-control" id="servings" placeholder="" value="" required="">
+                                <input type="number" class="form-control" id="servings" th:field="*{servings}">
                                 <div class="invalid-feedback">
                                     Valid servings is required.
                                 </div>
@@ -121,7 +124,7 @@
                             <div class="card-body">
                                 <ul class="list-group">
 
-                                    <li class="list-group-item" >
+                                    <li class="list-group-item" th:each="ingredient : ${recipe.ingredients}">
                                         <label class="badge badge-danger mt-2" style="font-size:20px"> Category 1 </label>
                                         <input type="checkbox" class="float-right mt-3">
                                     </li>
@@ -144,23 +147,33 @@
                         <!--directions-->
 
                         <div class="mb-3 mt-3">
+
                             <label for="directions"><h4>Directions</h4></label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="directions" placeholder="Type directions for your new recipe ..." required="">
+
+                                <textarea type="text" class="form-control" id="directions"
+                                          placeholder="Type directions for your new recipe ..." th:field="*{directions}">
+                                </textarea>
+
                                 <div class="invalid-feedback" style="width: 100%;">
                                     Your directions are required.
                                 </div>
-                            </div>
+
                         </div>
 
                         <!--notes-->
 
                         <div class="mb-3">
-                            <label for="email"><h4>Notes</h4></label>
-                            <input type="email" class="form-control" id="email" placeholder="Type notes for your new recipe ...">
+
+                            <label for="notes"><h4>Notes</h4></label>
+
+                            <textarea type="text" class="form-control" id="notes"
+                                      placeholder="Type notes for your new recipe ..." th:field="*{notes.recipeNotes}">
+                            </textarea>
+
                             <div class="invalid-feedback">
                                 Please enter a valid notes for your recipe.
                             </div>
+
                         </div>
 
                         <!--difficulty-->
@@ -184,6 +197,7 @@
                         <hr class="mb-4">
 
                         <button class="btn btn-primary btn-lg btn-block mb-4" type="submit">Submit</button>
+
                     </form>
                 </div>
 

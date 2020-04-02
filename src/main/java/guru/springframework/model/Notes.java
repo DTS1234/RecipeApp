@@ -1,14 +1,12 @@
 package guru.springframework.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 
 @Slf4j
-@Getter
-@Setter
+@Data
 @Entity
 public class Notes {
 
@@ -18,6 +16,7 @@ public class Notes {
 
     @OneToOne
     private Recipe recipe;
+
     @Lob
     private String recipeNotes;
 
